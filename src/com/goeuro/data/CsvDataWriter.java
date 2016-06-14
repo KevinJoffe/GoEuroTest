@@ -16,8 +16,10 @@ public class CsvDataWriter {
 					+ data.getClass().getSimpleName() + ".csv"), ',');
 			csvWriter.writeNext(data.getFields());
 			final IDataResult[] dataResult = data.getResults();
-			for (int i = 0; i < dataResult.length; i++) {
-				csvWriter.writeNext(dataResult[i].getResults());
+			if (dataResult != null) {
+				for (int i = 0; i < dataResult.length; i++) {
+					csvWriter.writeNext(dataResult[i].getResults());
+				}
 			}
 			csvWriter.close();
 		}
